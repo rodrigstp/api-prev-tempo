@@ -1,1 +1,1 @@
-api-prev-tempo
+Consumindo api de clima para cidades dos Brasil, neste projeto utilizei o BootStrap framework como base pra pagina html, de onde peguei o banco de imagens e fiz algumas alteraçoes no html pra ficar mais coerente com o projeto.
