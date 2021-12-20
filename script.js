@@ -34,7 +34,13 @@ console.log(response);
 .catch(err => {
 
 	console.error(err);
+
 });
+
+
+
+
+
 
 
 search_button.addEventListener('click', function(){
@@ -42,13 +48,10 @@ search_button.addEventListener('click', function(){
 });
 	
 		
-
-
-
 search_input.addEventListener('keypress', enter)
 function enter(event){
 	key = event.keyCode
-	if (key === 13){ //numeração que refere a tecla enter no teclado
+	if (key === 13){ 			//numeração que refere a tecla enter no teclado
 		searchResults(search_input.value)
 	}
 
@@ -56,12 +59,24 @@ function enter(event){
 
 function searchResults(city){
 
-	return fetch('https://community-open-weather-map.p.rapidapi.com/weather?q=London%2Cuk&lat=0&lon=0&callback=test&id=2172797&lang=null&units=imperial&mode=xml')
+	fetch(`${api.base}weather?q=${city}&lang=${api.lang}&units=${api.units}&APPID=${api.key}`)
 
-		.then(city => city.json())
+		.then(response => {
+					console.log(response)
 
-		.catch()
+			if(!response.ok){
+				throw new Error (`http error:status ${response.status}`)
+			}
 
+					return response.json();
+
+		})
+		.catch(error =>{
+			alert(erro.message)
+		}
+			
+			)
+	
 
 
 }
